@@ -1,0 +1,13 @@
+<% if @play.errors.any? %>
+  <section>
+    <header>
+      <h2>Oops! Your form could not be saved.</h2>
+      <h3>Please correct the following errors</h3>
+    </header>
+    <ul>
+      <% @play.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
