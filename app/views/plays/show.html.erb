@@ -1,0 +1,15 @@
+<h1><%= @play.name %></h1>
+<p><%= @play.description %></p>
+<p><%= @play.starts_at.to_s %></p>
+<p><%= format_price(@play) %></p>
+<%= link_to "All plays", plays_path %>
+
+<div>
+  <%= register_link(@play) %>
+</div>
+
+<div>
+  <%= link_to "Edit", edit_play_path(@play) %>
+  <%= link_to "Delete", play_path(@play), method: :delete, data: {confirm: "Are you sure?"} %>
+  <%= link_to "Who's going?", play_bookings_path(@play) %>
+</div>

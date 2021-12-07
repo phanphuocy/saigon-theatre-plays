@@ -1,0 +1,26 @@
+<h1><%= @plays.size %> Play</h1>
+<% if @plays.empty? %>
+  <p>Plays is empty</p>
+<% end %>
+<%= link_to "Add new play", new_play_path %>
+<% @plays.each do |play| %>
+  <article>
+    <header>
+      <%= poster_for(play) %>
+      <h2><%= link_to(play.name, play) %></h2>
+      <h3><%= play.seats_left %> seats</h3>
+    </header>
+    <p><%= play.description %></p>
+    <table>
+      <tr>
+        <th>When:</th>
+        <td><%= play.starts_at.to_s %></td>
+      </tr>
+      <tr>
+        <th>From:</th>
+        <td><%= format_price(play) %></td>
+      </tr>
+    </table>
+  </article>
+<% end %>
+

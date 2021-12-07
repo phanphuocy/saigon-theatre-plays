@@ -7,6 +7,8 @@ class Play < ApplicationRecord
       with: /\w+\.(gif|jpg|jfif|png)\z/i,
       message: "must reference a GIF, JPG, or PNG image"
   }
+
+  has_many :bookings, dependent: :destroy
   
   def free?
     from_price.blank? || from_price.zero?
@@ -14,5 +16,13 @@ class Play < ApplicationRecord
 
   def self.upcoming
     where('starts_at >= ?', 15.day.ago).order('starts_at')
+  end
+
+  def seats_left
+    capacity - bookings.size
+  end
+
+  def sold_out?
+    seats_left <= 0
   end
 end

@@ -1,0 +1,19 @@
+<h1>Bookings for <%= link_to(@play.name, @play) %></h1>
+
+<table>
+
+    <thead>
+    <tr>
+      <td>Name</td>
+      <td>How Heard</td>
+    </tr>
+    </thead>
+<tbody>
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.name %></td>
+      <td><%= booking.how_heard %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
