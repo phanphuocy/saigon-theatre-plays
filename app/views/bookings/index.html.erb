@@ -6,13 +6,15 @@
     <tr>
       <td>Name</td>
       <td>How Heard</td>
+      <td>At</td>
     </tr>
     </thead>
 <tbody>
   <% @bookings.each do |booking| %>
     <tr>
-      <td><%= booking.name %></td>
+      <td><%= booking.user.name %></td>
       <td><%= booking.how_heard %></td>
+      <td><%= time_ago_in_words(booking.created_at) %> ago</td>
     </tr>
   <% end %>
 </tbody>

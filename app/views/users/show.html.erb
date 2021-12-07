@@ -3,6 +3,16 @@
 <ul>
   <li><%= @user.email %></li>
 </ul>
+<h2>Your bookings</h2>
+<% if @bookings.any? %>
+  <ul>
+    <% @bookings.each do |booking| %>
+      <li><%= booking.play.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No bookings yet</p>
+<% end %>
 <footer>
   <nav>
     <% if current_user?(@user) %>

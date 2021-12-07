@@ -1,4 +1,6 @@
 class Play < ApplicationRecord
+  has_many :bookings, dependent: :destroy
+
   validates :name, :description, presence: true
   validates :description, length: {minimum: 25}
   validates :from_price, numericality: {greater_than_or_equal_to: 0}
@@ -7,8 +9,6 @@ class Play < ApplicationRecord
       with: /\w+\.(gif|jpg|jfif|png)\z/i,
       message: "must reference a GIF, JPG, or PNG image"
   }
-
-  has_many :bookings, dependent: :destroy
   
   def free?
     from_price.blank? || from_price.zero?
