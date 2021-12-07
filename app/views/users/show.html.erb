@@ -1,0 +1,12 @@
+<h1><%= @user.name %> page</h1>
+
+<ul>
+  <li><%= @user.email %></li>
+</ul>
+<footer>
+  <nav>
+    <% if current_user?(@user) %>
+      <%= link_to "Edit account", edit_user_path(@user) %>
+    <% end %>
+  </nav>
+</footer>
