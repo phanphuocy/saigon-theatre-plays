@@ -2,6 +2,13 @@
 <p><%= @play.description %></p>
 <p><%= @play.starts_at.to_s %></p>
 <p><%= format_price(@play) %></p>
+
+<div>
+  <% @recommenders.each do |user| %>
+    <span><%= user.name %></span>
+  <% end %>
+</div>
+
 <%= link_to "All plays", plays_path %>
 
 <div>

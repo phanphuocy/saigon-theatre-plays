@@ -1,5 +1,7 @@
 class Play < ApplicationRecord
   has_many :bookings, dependent: :destroy
+  has_many :recommendations, dependent: :destroy
+  has_many :recommenders, through: :recommendations, source: :user
 
   validates :name, :description, presence: true
   validates :description, length: {minimum: 25}

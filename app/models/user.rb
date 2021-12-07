@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
-
+  has_many :recommendations, dependent: :destroy
+  has_many :recommended_plays, through: :recommendations, source: :play
   has_secure_password
 
   validates :name, presence: true
@@ -13,6 +14,4 @@ class User < ApplicationRecord
     user = find_by(email: email)
     user && user.authenticate(password)
   end
-
-
 end

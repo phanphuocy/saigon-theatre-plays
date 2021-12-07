@@ -8,6 +8,7 @@ class PlaysController < ApplicationController
 
   def show
     @play = Play.find(params[:id])
+    @recommenders = @play.recommenders
   end
 
   def edit
